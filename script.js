@@ -12,6 +12,13 @@ function render (html) {
 */
 function greet () {
   // TODO: Write your code here
+const name= prompt("What is your name?")
+if (!name) {
+  render(" <h1> Please put in a name! </h1>")
+  return 
+}
+  render(`<p> Hello, ${name}. Nice to meet you!`)
+
 }
 
 /* 
@@ -35,6 +42,15 @@ function averageNumbers () {
 */
 function timeOfDay () {
   // TODO: Write your code here
+const h= new Date().getHours()
+let msg = ''
+if(h < 12) 
+  {msg = 'Good Morning!'}
+else if (h < 18)
+   {msg = 'Good Afternoon!'}
+else 
+  {msg = 'Good Evening!'}
+render(`<p> ${msg} </p>`)
 }
 
 /* 
@@ -47,6 +63,20 @@ function timeOfDay () {
 */
 function randomBetween () {
   // TODO: Write your code here
+const min = parseInt(prompt('Enter a minimum number:'))
+const max = parseInt(prompt('Enter a maximum number:'))
+
+if(isNaN(min) || isNaN(max)){
+  render(`Please use actual numbers!`)
+return
+}
+if (min >= max){
+  render(`please make sure the minumum number is less than the max!`)
+  return 
+}
+
+const rndNum = (Math.random() * (max - min + 1)) + min
+render (rndNum)
 }
 
 /* 
