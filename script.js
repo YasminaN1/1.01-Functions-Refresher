@@ -96,6 +96,11 @@ document.getElementById('btnTime').addEventListener('click', timeOfDay)
 document.getElementById('btnRandom').addEventListener('click', randomBetween)
 document.getElementById('btnClear').addEventListener('click', clearOutput)
 
+document.getElementById('btnTitle').addEventListener('click', changeTitle)
+document.getElementById('btnColor').addEventListener('click', cycleTextColor)
+document.getElementById('btnBg').addEventListener('click', randomBackground)
+document.getElementById('btnDouble').addEventListener('click', doubleNumber)
+
 /* 
   ------------------------------------------
   Student Challenge Section 
@@ -110,3 +115,38 @@ document.getElementById('btnClear').addEventListener('click', clearOutput)
   Write each function below, and don’t forget to connect each one 
   to a new button in index.html using addEventListener.
 */
+
+/* Function 1 - change title*/
+function changeTitle() {
+  document.querySelector("h1").textContent = "🧚🏼‍♀️Just Some Cutesy Functions✨";  
+}
+
+/* Function 2 - ccycle text color*/
+let textColorIndex = 0;
+const textColors = ["black", "blue", "green", "purple", "red"];
+
+function cycleTextColor() {
+  const out = document.getElementById("out");
+  out.style.color = textColors[textColorIndex];
+  textColorIndex = (textColorIndex + 1) % textColors.length;
+}
+
+/* Function 3 - chanfe box color*/
+function randomBackground () {
+  const outDiv = document.getElementById('out')
+  const randomColor = `rgb(${Math.floor(Math.random() * 256)}, 
+                           ${Math.floor(Math.random() * 256)}, 
+                           ${Math.floor(Math.random() * 256)})`
+  outDiv.style.setProperty('background-color', randomColor, 'important')
+}
+
+/*Function 4 - double number*/
+function doubleNumber () {
+  const num = parseFloat(prompt('Enter a number to double:'))
+  if (isNaN(num)) {
+    render('<p>Please enter a valid number!</p>')
+    return
+  }
+  const doubled = num * 2
+  render(`<p>${num} doubled is ${doubled}.</p>`)
+}
